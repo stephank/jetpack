@@ -1,3 +1,21 @@
+This is a small game called Jetpack originally written by Mark Bradley. A much prettier
+Macintosh version of this game also exists. This is an earlier version of that game that
+Mark wrote for X11, and for which he released source code on Usenet.
+
+The license is fairly strict; see copyright.h. You'll notice I'm going a bit against it.
+The version available here contains no functional changes, however. The aim is only to
+increase compatibility with modern systems.
+
+And besides, Mark himself seems to be impossible to find online. If you do know where to
+find him, please let me know, so I can get his written consent.
+
+-- Stéphan Kochen
+
+Original README follows:
+========================
+
+
+
 All the files in this distribution have tab stops = 4
 
 There are a couple things you may have to play with to get jetpack
