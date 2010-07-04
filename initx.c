@@ -116,55 +116,14 @@ set_up_contexts()
 	}
 }
 
-/*	set_up_colors creates the colors and stores them in the graphics
-	smallgcs. If the system is mono, all colors are white except CBLACK.
-	This isn't very elegant, but I use the colors for so many different
-	items that it would be impossible to set some of them to black and not
-	lose some important images. It's still playable.
-*/
+/*	set_up_colors looks up the pixel values of the colors. */
 set_up_colors()
 {
-	int				i;
-	XColor			tmpcolor;
-	unsigned long	pixel, planes[3];
+	int		i;
+	XColor	screencolor, exactcolor;
 
-	if(DisplayCells(display, screen) <= 2) {
-		for(i=0; i<NCOLORS; i++) {
-			if(i == CBLACK) ctable[i].pixelvalue = blackpixel;
-			else ctable[i].pixelvalue = whitepixel;
-		}
-	} else {
-		XAllocColorCells(display, colormap, False, planes, 3, &pixel, 1);
-		for(i=0; i<NCOLORS; i++) {
-			XParseColor(display, colormap, ctable[i].name, &tmpcolor);
-			switch(i) {
-				case CBLACK:
-					tmpcolor.pixel = pixel;
-					break;
-				case CRED:
-					tmpcolor.pixel = pixel | planes[0];
-					break;
-				case CORANGE:
-					tmpcolor.pixel = pixel | planes[1];
-					break;
-				case CYELLOW:
-					tmpcolor.pixel = pixel | planes[1] | planes[0];
-					break;
-				case CBLUE:
-					tmpcolor.pixel = pixel | planes[2];
-					break;
-				case CGREY:
-					tmpcolor.pixel = pixel | planes[2] | planes[0];
-					break;
-				case CGREEN:
-					tmpcolor.pixel = pixel | planes[2] | planes[1];
-					break;
-				case CWHITE:
-					tmpcolor.pixel = pixel | planes[2] | planes[1] | planes[0];
-					break;
-			}
-			XStoreColor(display, colormap, &tmpcolor);
-			ctable[i].pixelvalue = tmpcolor.pixel;
-		}
+	for(i=0; i<NCOLORS; i++) {
+		XAllocNamedColor(display, colormap, ctable[i].name, &screencolor, &exactcolor);
+		ctable[i].pixelvalue = exactcolor.pixel;
 	}
 }
