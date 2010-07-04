@@ -9,6 +9,7 @@
 */
 
 #include	<stdio.h>
+#include	<stdlib.h>
 #include	<string.h>
 #include	<fcntl.h>
 #include	<sys/param.h>
@@ -312,7 +313,7 @@ extern int	nx, ny;
 #define EXTRAMANSCORE	10000
 #define USECDELAY		45000
 
-extern int	men, score, bonus, bonustimer, initbonus, level;
+extern int	men, score, bonus, bonustimer, initbonus, level,
 			oldscore, oldlevel, extramaninc;
 
 /*	game state
