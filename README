@@ -1,0 +1,85 @@
+All the files in this distribution have tab stops = 4
+
+There are a couple things you may have to play with to get jetpack
+running:
+
+1) Fonts:	Jetpack uses two fonts, a small one and a large one. In
+			initx.c, the font names are defined using the X Logical Font
+			Description (XLFD). The definitions are near the top of the
+			file, and there is a large block of comments above them giving
+			the full names of the fonts and how you might go about
+			selecting alternates. The font names are partial names that
+			work on my system, but may not on yours (say, if you have
+			thousands of fonts.) If jetpack complains about being unable
+			to load a font, you may have to paste a more specific or
+			different fontname in the variables fontname and bigfontname.
+
+2) Blitting:	I originally wrote and tested jetpack on some color X
+				terminals. The game is designed so that all the drawing in
+				each frame is drawn into a window-sized off-screen pixmap,
+				which is then blitted to the window. This way there is no
+				flicker. However, the X terminals use hardware for
+				blitting, and can therefore keep up with the program,
+				while some sparcstations I know do all the blitting in
+				software, causing horrible delays. So I changed the code
+				to allow the user to compile it "non-blitting". This way
+				there is flicker, since objects have to be erased and
+				redrawn in the window, but a machine doing all of it's X
+				in software can handle it better. It uses an algorithm
+				that figures out which objects intersect each other, so it
+				can erase a group, then draw the group, then go to the
+				next group, thus minimizing the time between erase and
+				draw for each object. The worst flicker tends to be on the
+				maze walls, since at any particular time most of the maze
+				walls on screen will be touching each other. If it bothers
+				you too much, you can tone down the white by putting a
+				different color name in the ctable structure in initx.c
+				rather than "white". Ok, now in the Imakefile there is a
+				line for DEFINES, and on this line is a flag -DBLIT. If
+				you leave this flag in, the program will compile the
+				flicker-free blitting version, and if you delete it, it
+				will compile the flickering less X-intensive version. If
+				this sounds confusing, I apologise. Just compile the game
+				as-is, and if it seems to be really slow (it's supposed to
+				be pretty quick) remove the -DBLIT flag from the Imakefile
+				and recompile.
+
+Standard things:
+
+xmkmf : set up a Makefile tailored to your system. Check Imakefile first
+to make sure everything is how you want it.
+
+make depend : check dependencies
+
+make jetpack : compile the program
+
+make install : install jetpack and all its files
+
+Notes:
+I tried to write the Imakefile so it would be easy to understand and
+modify. The important bits are the DESTDIR variable, which you can set to
+wherever you want jetpack to reside, the DEFINES variable which has to
+have the -DSCOREPATH  and -DLEVELPATH flags as-is, and the SCOREFILE and
+LEVELFILE variables, which you can set to just about any filename prefixes
+you like. A word of caution -- the line:
+
+InstallNonExec(levels/000,$(LEVELFILE)000)
+
+Copies the file in levels/ called 000, to the file you named in LEVELFILE
+as the prefix, and 000 as the end. so if you set LEVELFILE = j.lev ,
+then the installed level file will be named j.lev000 . Currently level 0
+is the only predifined level supplied, being the demo level. If I feel
+like it, or if anyone wants to, a level editor would be a "good thing".
+However, I'm not too sure I like the idea since jetpack is supposed to be
+an arcade action game, and not a "solve each level puzzle" game. But I was
+the fool who allowed levels to be read in from files, so I guess I'll have
+to live with the consequences. If you want me to write one (or want to do
+it yourself) let me know.
+
+There is also a sample Makefile that was created from the Imakefile for
+those of you who don't have Imake, and a very simple bare-bones Makefile
+for people who get confused by the huge amount of garbage in an
+Imake-created Makefile.
+
+There is a man page -- "make install.man" will install it in the specified
+man directory. Don't forget to run catman after installing it.

@@ -1,0 +1,37 @@
+   File Name		Archive #	Description
+-----------------------------------------------------------
+ ADVERTISEMENT              4	
+ Imakefile                  4	
+ MANIFEST                   1	This shipping list
+ Makefile.sample            2	
+ Makefile.simple            3	
+ README                     1	
+ bitmap.c                   2	
+ bitmap.h                   1	
+ bonus.c                    4	
+ collision.c                4	
+ copyright.h                2	
+ defs.h                     3	
+ demo.c                     3	
+ draw.c                     2	
+ erase.c                    3	
+ events.c                   4	
+ gameover.c                 4	
+ initx.c                    3	
+ jetpack.man                4	
+ levels                     1	
+ levels/000                 4	
+ main.c                     4	
+ maze.c                     3	
+ message.c                  2	
+ message.h                  4	
+ normal.c                   3	
+ p2.hdr                     4	
+ quitx.c                    4	
+ scores.c                   2	
+ setinmaze.c                4	
+ setup.c                    3	
+ special.c                  4	
+ time.c                     4	
+ update.c                   3	
+ windowx.c                  1	

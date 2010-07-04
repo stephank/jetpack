@@ -1,0 +1,171 @@
+.\" Copyright (c) 1992 Mark Bradley
+.\"
+.\" @(#)jetpack.1 1.00 90/02/15 SMI;
+.TH JETPACK 1  "23 February 1992"
+.SH NAME
+jetpack \- Arcade action game for X Windows
+.SH SYNOPSIS
+.B jetpack
+.SH DESCRIPTION
+.IX games jetpack "" "\fLjetpack\fR \(em Arcade action game"
+.IX jetpack "" "\fLjetpack\fR \(em Arcade action game"
+.LP
+.B jetpack
+is an arcade action game.
+The user controls a
+.B player
+wearing a jetpack.
+The game takes place within a series of
+.B levels
+that each consist of a
+.B maze ,
+.B fuel pods ,
+a
+.B door ,
+and a
+.B key .
+The player must travel through the maze to find the key
+and bring it back to the door to exit to the next level.
+There is a
+.B bonus
+for each level that is decremented as time goes on.
+It is awarded when the player sucessfully exits the level.
+.SS Movement
+.LP
+The player can move left and right through space or walk along a
+horizontal maze wall.
+The player can also fire the jetpack, thrusting him upward.
+If the player is not standing on a wall and not firing the jetpack, he will
+accelerate downward.
+The player cannot be damaged by falling.
+.LP
+Firing the jetpack uses fuel.
+The player has a tank of fuel that can contain up to 1000 units of fuel.
+Picking up a fuel pod gives the player 100 units of fuel.
+.SS Enemies
+.LP
+There are three kinds of enemies in jetpack:
+.B guards ,
+.B fireballs ,
+and
+.B wall sweepers .
+Touching any enemy is fatal, and enemies do not harm each other.
+.LP
+Guards patrol the maze.
+They fly in the middle of the corridors and follow random paths through
+the maze.
+.LP
+Fireballs fly through space and bounce off walls.
+.LP
+Wall Sweepers cling to walls and continuously move along the surface of
+the walls.
+They can hang on to any side, and when they reach the end of a wall, flip
+to hug the other side and continue in the opposite direction.
+.SS Scoring
+.LP
+The bonus for each level is proportional to the size of the level, how
+dense the maze is, and how many enemies and fuel pods are in it.
+In addition to the bonus, picking up a fuel pod is worth 100 points, and
+picking up the key is worth 500 points.
+.SS Commands
+.PD 0
+.LP
+Q	:	Quit the current game.
+.LP
+K	:	Commit suicide. (player loses a life and returns to the door)
+.LP
+a, A, keypad 4
+.LP
+.RS
+:	Move left. Player will continue to move left until direction is
+changed.
+.RE
+.LP
+d, D, keypad 6
+.LP
+.RS
+:	Move right. Player will continue to move right until direction is
+changed.
+.RE
+.LP
+s, S, keypad 5
+.LP
+.RS
+:	Stop horizontal movement.
+.RE
+.LP
+left mouse button
+.LP
+.RS
+:	Move left. Player will continue to move left until the button is
+released.
+.RE
+.LP
+right mouse button
+.LP
+.RS
+:	Move right. Player will continue to move right until the button is
+released.
+.RE
+.LP
+center mouse button
+.LP
+.RS
+:	Fire jetpack. Jetpack will continue to fire until the button is
+released.
+.RE
+.PD
+.SS Miscellaneous
+.LP
+The player starts each level from the door.
+When the player is standing within the door, he cannot be killed.
+The door is grey when the player is in it, otherwise it is white.
+The player is returned to the door each time he dies.
+.LP
+If the player has the key when he dies, the key stays where the player was
+killed.
+.LP
+Extra players are awarded every 10000 points.
+.SH FILES
+.PD 0
+.LP
+lib/jetpack.scores - jetpack high scores
+.LP
+lib/jetpack.lev000 - predefined demo level
+.PD
+.SH DIAGNOSTICS
+.LP
+"Jetpack : Cannot connect to X Server <servername>"
+.PD 0
+.LP
+.PD
+Jetpack can't open the display you wanted.
+Check the environment variable DISPLAY and make sure the host is
+authorized.
+.LP
+"Jetpack : Couldn't load <fontname> font."
+.PD 0
+.LP
+.PD
+Jetpack was unable to load a needed font.
+Check to make sure your X server has the font loaded, or if necessary,
+recompile jetpack with a font that exists on your server.
+.LP
+"Jetpack : Couldn't open scorefile."
+.PD 0
+.LP
+.PD
+Jetpack couldn't open or create a high score file.
+Check to see if the jetpack lib directory is readable and writable, and if
+the score file already exists, that it is readable and writable.
+.SH BUGS
+.LP
+Jetpack does not use .Xauthority databases.
+.LP
+Jetpack does not have any command line options.
+.LP
+Jetpack has the ability to read in predefined levels, but only the demo
+level is provided.
+.SH AUTHOR
+.LP
+Copyright (c) 1992 Mark Bradley
