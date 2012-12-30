@@ -5,7 +5,7 @@ AM_CPPFLAGS = \
 	-DSCOREPATH='"$(sharedstatedir)/jetpack.scores"' \
 	-DLEVELPATH='"$(levdir)/"'
 
-AM_CFLAGS = $(X_CFLAGS)
+AM_CFLAGS = -Wall -Werror $(X_CFLAGS)
 
 bin_PROGRAMS = jetpack
 

@@ -20,7 +20,6 @@ Window	parent;
     XSetWindowAttributes	windowattr;
     XSizeHints				sizehints;
 	XClassHint				classhint;
-	XWMHints				wmhints;
     unsigned long			windowmask;
     Window					newwindow;
 

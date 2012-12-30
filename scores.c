@@ -246,7 +246,7 @@ void	shift_highs(int i)
 void	get_high_name(char *buf)
 {
 	XEvent					event;
-	register int			j, finished, timer;
+	register int			j, finished;
 	/*
 	register unsigned long	utimer, usecond;
 	*/

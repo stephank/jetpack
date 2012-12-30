@@ -433,8 +433,6 @@ void	place_string(char *s, int y, int color, XFontStruct *info)
 */
 void	title_draw()
 {
-    register int    i, j;
-
     update_fireballs();
     update_sweepers();
     update_guards();
