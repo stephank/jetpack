@@ -6,7 +6,7 @@
 
 /*	collision_check checks for all collisions
 */
-collision_check()
+void	collision_check()
 {
 	register int	i;
 	register long	dx, dy;
@@ -134,7 +134,7 @@ collision_check()
 /*	message_checks if the player has hit a message zone and if so, puts up
 	the appropriate message
 */
-message_check()
+void	message_check()
 {
 	register int	i;
 

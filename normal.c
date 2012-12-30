@@ -7,7 +7,7 @@
 /* normal_level is a very ugly switch statement that sets up the various
 	types of "normal" levels
 */
-normal_level()
+void	normal_level()
 {
 	register int	mx, my, f, p, s, n, md, mt, msc, fmin, fmax, smin, smax,
 					g, gmin, gmax, kind, obj;

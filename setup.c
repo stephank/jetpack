@@ -7,9 +7,9 @@
 /*	make_random_level takes its huge list of arguments and creates a
 	level.
 */
-make_random_level(mx, my, msc, md, mt, f, fmin, fmax, s, smin, smax, g, gmin,
-					gmax, p)
-int mx, my, msc, md, mt, f, fmin, fmax, s, smin, smax, g, gmin, gmax, p;
+void	make_random_level(int mx, int my, int msc, int md, int mt, int f,
+		int fmin, int fmax, int s, int smin, int smax, int g, int gmin,
+		int gmax, int p)
 {
 	float	r, t;
 
@@ -33,7 +33,7 @@ int mx, my, msc, md, mt, f, fmin, fmax, s, smin, smax, g, gmin, gmax, p;
 /*	reset_level just gives values to certain global variables that need to
 	be initialized for each level.
 */
-reset_level()
+void	reset_level()
 {
 	leveldone = 0;
 	waiting = 0;
@@ -56,7 +56,7 @@ reset_level()
 /*	reset_game just gives values to certain global variables that need to
 	be initialized for each game.
 */
-reset_game()
+void	reset_game()
 {
 	dead = 0;
     paused = 0;
@@ -71,8 +71,7 @@ reset_game()
 
 /*	place_player puts the player and the door at maze location (x,y).
 */
-place_player(x, y)
-int	x, y;
+void	place_player(int x, int y)
 {
 	ply = (y + 1) * mazescale - 11;
 	plx = x * mazescale + mazescale / 2;
@@ -90,7 +89,7 @@ int	x, y;
 /*	random_player puts the player and the door in a random maze location
 	with a floor.
 */
-random_player()
+void	random_player()
 {
 	register int	x, y;
 
@@ -115,8 +114,7 @@ random_player()
 	[dx,dy]. The coordinates are modified to so the fireball won't sit on
 	a wall.
 */
-place_fireball(x, y, dx, dy)
-int	x, y, dx, dy;
+void	place_fireball(int x, int y, int dx, int dy)
 {
 	if(numfire == MAXFIREBALLS) return;
 	nx = x;
@@ -133,8 +131,7 @@ int	x, y, dx, dy;
 	from min to max. The coordinates of each are generated so they won't
 	sit on a wall or are too close to the player.
 */
-random_fireballs(num, min, max)
-int	num, min, max;
+void	random_fireballs(int num, int min, int max)
 {
 	register int	i;
 
@@ -161,8 +158,7 @@ int	num, min, max;
 /*	place_guard puts a guard at maze location (x,y) with direction dir and
 	speed speed
 */
-place_guard(x, y, dir, speed)
-int	x, y, dir, speed;
+void	place_guard(int x, int y, int dir, int speed)
 {
 	if(numguard == MAXGUARDS) return;
 	guardx[numguard] = x * mazescale + mazescale / 2;
@@ -177,8 +173,7 @@ int	x, y, dir, speed;
 /*	random_guards puts num guards in the maze with speeds ranging from min
 	to max. Guards are nor placed on the same square as the player.
 */
-random_guards(num, min, max)
-int	num, min, max;
+void	random_guards(int num, int min, int max)
 {
 	register int	i, x, y, m;
 
@@ -205,8 +200,7 @@ int	num, min, max;
 /*	place_sweeper puts a sweeper at maze location (x,y) with a floor
 	direction of floor, rotation of rot, and speed speed
 */
-place_sweeper(x, y, floor, rot, speed)
-int	x, y, floor, rot, speed;
+void	place_sweeper(int x, int y, int floor, int rot, int speed)
 {
 	if(numsweep == MAXSWEEPERS) return;
 	sweepx[numsweep] = x * mazescale + mazescale / 2 + xdir[floor] *
@@ -230,8 +224,7 @@ int	x, y, floor, rot, speed;
 /*	random sweepers puts num sweepers in the maze with speeds from min to
 	max. Sweepers will not be placed in the same square as the player.
 */
-random_sweepers(num, min, max)
-int	num, min, max;
+void	random_sweepers(int num, int min, int max)
 {
 	register int	i, x, y, dir, m;
 
@@ -272,8 +265,7 @@ int	num, min, max;
 /*	place_fuel puts a fuel pod at world location (x,y). The coordinates
 	are modified so the pod won't sit on a wall.
 */
-place_fuel(x, y)
-int x, y;
+void	place_fuel(int x, int y)
 {
 	if(numfuel == MAXFUELPODS) return;
 	nx = x;
@@ -288,8 +280,7 @@ int x, y;
 /*	random_fuel places num fuel pods in the maze. The coordinates are
 	generated so they don't sit on walls or too close together.
 */
-random_fuel(num)
-int	num;
+void	random_fuel(int num)
 {
 	register int	i, j, ok, radius;
 
@@ -317,8 +308,7 @@ int	num;
 /*	place_key puts the key at world coordinates (x,y). The coordinates are
 	modified so the key will not sit on a wall.
 */
-place_key(x, y)
-int	x, y;
+void	place_key(int x, int y)
 {
 	nx = x;
 	ny = y;
@@ -331,7 +321,7 @@ int	x, y;
 /*	random_key puts the key in a random location. The coordinates are
 	generated so the key won't be on a wall or close to the player.
 */
-random_key()
+void	random_key()
 {
 	register int	radius,dist;
 

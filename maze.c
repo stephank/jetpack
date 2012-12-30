@@ -17,9 +17,7 @@ int			mazescale, mazelcount, mazewidth, mazeheight;
 
 /*	generate maze uses a digging algorithm to generate the maze.
 */
-generate_maze(width, height, ratio, twistratio)
-int	width, height;
-float ratio, twistratio;
+void	generate_maze(int width, int height, float ratio, float twistratio)
 {
 	register int	x, y, d, cells, lines, twist, dug;
 	char			celldone[MAXMAZEWIDTH][MAXMAZEHEIGHT];
@@ -120,8 +118,7 @@ float ratio, twistratio;
 
 /*	add_line adds a world-coordinates line to the maze drawing
 */
-add_line( x1, y1, x2, y2)
-int	x1, y1, x2, y2;
+void	add_line(int x1, int y1, int x2, int y2)
 {
 	mazelines[mazelcount].x1 = x1;
 	mazelines[mazelcount].y1 = y1;
@@ -133,8 +130,7 @@ int	x1, y1, x2, y2;
 /*	convert_maze creates a world drawing of the maze from its array
 	structure.
 */
-convert_maze(width, height)
-int	width, height;
+void	convert_maze(int width, int height)
 {
 	int x, y;
 
@@ -150,8 +146,7 @@ int	width, height;
 /*  setup_title_maze creates the trivial maze that the title screen uses,
     and creates the monsters that cavort in it.
 */
-setup_title_maze()
-
+void	setup_title_maze()
 {
     mazewidth = 4;
     mazeheight = 3;

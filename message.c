@@ -18,9 +18,7 @@ int		messagex, messagey, bigmessagex, bigmessagey,
 
 /*	message puts a message s on the screen in color for time
 */
-message(s, color, time)
-char	*s;
-int		color, time;
+void	message(char *s, int color, int time)
 {
 	messagecolor = color;
 	messagetime = time;
@@ -33,9 +31,7 @@ int		color, time;
 
 /*	message puts a big message s on the screen in color for time
 */
-bigmessage(s, color, time)
-char	*s;
-int		color, time;
+void	bigmessage(char *s, int color, int time)
 {
 	bigmessagecolor = color;
 	bigmessagetime = time;
@@ -51,8 +47,7 @@ int		color, time;
 	Called dumb because the procedure is ugly and the messages are mostly
 	snide remarks.
 */
-dumb_message(kind)
-int	kind;
+void	dumb_message(int kind)
 {
 	register int	opinion, num;
 

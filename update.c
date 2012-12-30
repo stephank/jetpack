@@ -29,7 +29,7 @@ int	doorx, doory, indoor;
 
 /*	update does all the object updating
 */
-update()
+void	update()
 {
 	update_player();
 	update_fireballs();
@@ -39,7 +39,7 @@ update()
 
 /*	update_player updates the player
 */
-update_player()
+void	update_player()
 {
 	register int	flags;
 
@@ -105,7 +105,7 @@ update_player()
 
 /*	update_fireballs updates all the fireballs
 */
-update_fireballs()
+void	update_fireballs()
 {
 	register int	i, flags;
 
@@ -125,7 +125,7 @@ update_fireballs()
 
 /*	update_guards updates all the guards
 */
-update_guards()
+void	update_guards()
 {
 	register int	i, dir, x, y, dx, dy, sp;
 
@@ -159,7 +159,7 @@ update_guards()
 
 /*	update_sweepers updates all the sweepers
 */
-update_sweepers()
+void	update_sweepers()
 {
 	register int	i, flags;
 
@@ -215,8 +215,7 @@ update_sweepers()
 
 /*	decrement_sweepdir does a circular decrement on sweeper i's direction
 */
-decrement_sweepdir(i)
-int i;
+void	decrement_sweepdir(int i)
 {	
 	sweepdir[i]--;
 	if(sweepdir[i] < 0) sweepdir[i] = 3;
@@ -226,8 +225,7 @@ int i;
 
 /*	increment_sweepdir does a circular increment on sweeper i's direction
 */
-increment_sweepdir(i)
-int i;
+void	increment_sweepdir(int i)
 {	
 	sweepdir[i]++;
 	if(sweepdir[i] > 3) sweepdir[i] = 0;

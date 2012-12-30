@@ -11,6 +11,7 @@
 #include	<stdio.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<unistd.h>
 #include	<fcntl.h>
 #include	<sys/param.h>
 #include	<sys/file.h>
@@ -320,3 +321,103 @@ extern int	men, score, bonus, bonustimer, initbonus, level,
 */
 
 extern int	paused, leveldone, gameover, lastscore;
+
+/*	function prototypes
+*/
+void	set_up_bitmaps();
+void	bonus_check();
+void	decrement_bonus();
+void	extra_man_check();
+void	score_bonus();
+void	collision_check();
+void	message_check();
+void	demo();
+void	title_screen();
+void	demo_walk(int x);
+void	demo_fly(int x, int y);
+void	demo_delay();
+void	demo_player();
+void	draw();
+void	draw_maze();
+void	draw_player();
+void	draw_fireballs();
+void	draw_guards();
+void	draw_sweepers();
+void	draw_treasures();
+void	draw_door();
+int	transx(int x, int off);
+int	transy(int y, int off);
+void	refresh_info();
+void	draw_messages();
+void	draw_info();
+void	place_string(char *s, int y, int color, XFontStruct *info);
+void	title_draw();
+void	title_refresh();
+void	init_zones();
+void	set_zone(int x, int y, int w, int h, int type, int num);
+int	zone_intersect(int i, int j);
+void	erase_draw_zones();
+void	erase_recur(int i);
+void	draw_recur(int i);
+void	refresh();
+int	event_filter();
+void	key_hit(XKeyEvent *event);
+int	demo_event_filter();
+void	title_event_filter();
+void	title_key_hit(XKeyEvent *event);
+void	death();
+void	game_over();
+void	init_X();
+void	set_up_contexts();
+void	set_up_colors();
+int	main(int argc, char **argv);
+void	generate_maze(int width, int height, float ratio, float twistratio);
+void	add_line(int x1, int y1, int x2, int y2);
+void	convert_maze(int width, int height);
+void	setup_title_maze();
+void	message(char *s, int color, int time);
+void	bigmessage(char *s, int color, int time);
+void	dumb_message(int kind);
+void	normal_level();
+void	quit_game();
+void	open_scores();
+void	close_scores();
+void	read_scores();
+void	write_scores();
+void	read_new_scores();
+void	check_score();
+void	draw_scores(int which);
+void	shift_highs(int i);
+void	get_high_name(char *buf);
+int	dialog_key(XKeyEvent *event);
+void	display_dialog(Window w);
+int	set_in_maze(int off);
+void	make_random_level(int mx, int my, int msc, int md, int mt, int f,
+		int fmin, int fmax, int s, int smin, int smax, int g, int gmin,
+		int gmax, int p);
+void	reset_level();
+void	reset_game();
+void	place_player(int x, int y);
+void	random_player();
+void	place_fireball(int x, int y, int dx, int dy);
+void	random_fireballs(int num, int min, int max);
+void	place_guard(int x, int y, int dir, int speed);
+void	random_guards(int num, int min, int max);
+void	place_sweeper(int x, int y, int floor, int rot, int speed);
+void	random_sweepers(int num, int min, int max);
+void	place_fuel(int x, int y);
+void	random_fuel(int num);
+void	place_key(int x, int y);
+void	random_key();
+int	special_setup();
+void	begin_timer();
+void	stop_timer();
+unsigned long	get_timer();
+void	update();
+void	update_player();
+void	update_fireballs();
+void	update_guards();
+void	update_sweepers();
+void	decrement_sweepdir(int i);
+void	increment_sweepdir(int i);
+void	set_up_windows();

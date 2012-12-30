@@ -68,7 +68,7 @@ int	event_filter()
 			return(1);
 			break;
 		case KeyPress:
-			key_hit(&event);
+			key_hit(&event.xkey);
 			return(1);
 			break;
 	}
@@ -77,8 +77,7 @@ int	event_filter()
 
 /*	key_hit handles game key events
 */
-key_hit(event)
-XKeyEvent	*event;
+void	key_hit(XKeyEvent *event)
 {
 	char			buf;
 	KeySym			key;
@@ -166,7 +165,7 @@ int	demo_event_filter()
 			gameover = 0;
 			break;
 		case KeyPress:
-			title_key_hit(&event);
+			title_key_hit(&event.xkey);
 			return(1);
 			break;
 	}
@@ -175,7 +174,7 @@ int	demo_event_filter()
 
 /*	title_event_filter handles events for the title screen
 */
-title_event_filter()
+void	title_event_filter()
 {
 	XEvent	event;
 
@@ -190,15 +189,14 @@ title_event_filter()
 			gameover = 0;
 			break;
 		case KeyPress:
-			title_key_hit(&event);
+			title_key_hit(&event.xkey);
 			break;
 	}
 }
 
 /*	title_key_hit handles key events for the demo and title screen
 */
-title_key_hit(event)
-XKeyEvent	*event;
+void	title_key_hit(XKeyEvent *event)
 {
 	char			buf;
 	KeySym			key;

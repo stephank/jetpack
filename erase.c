@@ -28,7 +28,7 @@ struct zone	zones[MAXOBJECTS];
 
 /*	init_zones initializes the eraseable zones
 */
-init_zones()
+void	init_zones()
 {
 	numzones = 0;
 }
@@ -39,8 +39,7 @@ init_zones()
 	the object's information arrays. If type == ZLINE, w and h are used as
 	the second endpoint of a line.
 */
-set_zone(x, y, w, h, type, num)
-int	x, y, w, h, type, num;
+void	set_zone(int x, int y, int w, int h, int type, int num)
 {
 	register int	j;
 
@@ -67,8 +66,7 @@ int	x, y, w, h, type, num;
 	is also a built-in error EDGE, since the player moving around can add
 	some uncertainty to what is covering what.
 */
-int	zone_intersect(i, j)
-int	i, j;
+int	zone_intersect(int i, int j)
 {
 	if(zones[i].type == ZLINE) {
 		if(zones[j].type == ZLINE) {
@@ -103,7 +101,7 @@ int	i, j;
 	the time between erase and draw is minimized for each object while
 	preventing nasty overwriting.
 */
-erase_draw_zones()
+void	erase_draw_zones()
 {
 	register int	i;
 
@@ -115,8 +113,7 @@ erase_draw_zones()
 
 /*	erase_recur erases zone i and all the zones that touch it.
 */
-erase_recur(i)
-int	i;
+void	erase_recur(int i)
 {
 	register int	j;
 
@@ -137,8 +134,7 @@ int	i;
 /*	draw_recur draws the object associated with zone i and the objects
 	associated with all the zones that touch it.
 */
-draw_recur(i)
-int	i;
+void	draw_recur(int i)
 {
 	register int	j, tmp;
 
@@ -261,7 +257,7 @@ int	i;
 
 /*	refresh draws all the objects
 */
-refresh()
+void	refresh()
 {
 	register int	i;
 

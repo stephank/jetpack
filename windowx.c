@@ -59,7 +59,7 @@ Window	parent;
 /*	set_up_windows sets up the major windows and pixmaps used in the game.
 */
 
-set_up_windows()
+void	set_up_windows()
 {
 	gamewindow = open_window(0, 0, WINDOWWIDTH, WINDOWHEIGHT+INFOHEIGHT,
 								rootwindow);

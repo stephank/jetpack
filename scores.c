@@ -30,7 +30,7 @@ int		dialogwidth, dialogheight;
 /*	open_scores tries to open the score file, and if it can't it tries to
 	create one.
 */
-open_scores()
+void	open_scores()
 {
 	numhighs = 0;
 	scorefd = open(SCOREPATH, O_RDWR);
@@ -75,7 +75,7 @@ open_scores()
 
 /*	close_scores closes the score file.
 */
-close_scores()
+void	close_scores()
 {
 	fclose(scorefile);
 	close(scorefd);
@@ -83,7 +83,7 @@ close_scores()
 
 /*	read_scores reads the high score data from the score file. 
 */
-read_scores()
+void	read_scores()
 {
 	register int	i;
 
@@ -101,7 +101,7 @@ read_scores()
 
 /*	write_scores writes the high score data into the score file.
 */
-write_scores()
+void	write_scores()
 {
 	register int	i;
 
@@ -119,7 +119,7 @@ write_scores()
 /*	read_new_scores re-reads in the score file info just in case it has
 	been changed.
 */
-read_new_scores()
+void	read_new_scores()
 {
 	flock(scorefd,LOCK_EX);
 	read_scores();
@@ -133,7 +133,7 @@ read_new_scores()
 	table, and if it makes it, gets the player's name and saves the new
 	high scores in the file.
 */
-check_score()
+void	check_score()
 {
 	register int	i, spot;
 	char			buf[MAXNAMELENGTH];
@@ -190,8 +190,7 @@ check_score()
 	allows only 5 of the names to be drawn at a time, which keeps things
 	from lagging.
 */
-draw_scores(which)
-int	which;
+void	draw_scores(int which)
 {
 	register int	i, j, length, width, y, first, last;
 
@@ -229,8 +228,7 @@ int	which;
 
 /*	shift_highs pushes all the scores from place i down one spot.
 */
-shift_highs(i)
-int	i;
+void	shift_highs(int i)
 {
 	int	j;
 
@@ -245,8 +243,7 @@ int	i;
 /*	get_high_name brings up a dialog that prompts the player to enter
 	his/her name. The name is stored in buf.
 */
-get_high_name(buf)
-char	*buf;
+void	get_high_name(char *buf)
 {
 	XEvent					event;
 	register int			j, finished, timer;
@@ -279,7 +276,7 @@ char	*buf;
 					}
 					break;
 				case KeyPress:
-					finished = dialog_key(&event);
+					finished = dialog_key(&event.xkey);
 					break;
 			}
 	}
@@ -304,8 +301,7 @@ char	*buf;
 
 /*	dialog_key processes keypresses from the dialog
 */
-int	dialog_key(event)
-XKeyEvent	*event;
+int	dialog_key(XKeyEvent *event)
 {
 	int				length, l;
 	char			buf[MAXNAMELENGTH];
@@ -357,8 +353,7 @@ XKeyEvent	*event;
 /*	display_dialog draws the part of the dialog specified by w. Also
 	refreshes anything that needs to be.
 */
-display_dialog(w)
-Window	w;
+void	display_dialog(Window w)
 {
 	if(w == dialogwindow) {
 		XDrawString(display, dialogwindow, ctable[CGREEN].biggc,

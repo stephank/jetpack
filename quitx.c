@@ -7,7 +7,7 @@
 /*	quit_game destroys all resources, closes the score file, and quits.
 */
 
-quit_game()
+void	quit_game()
 {
 	register int	i, j;
 

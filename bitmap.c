@@ -30,9 +30,9 @@ int	skelcolor = CWHITE;
 int	fuelcolor[FUELPARTS] = { CORANGE, CRED, CGREY, CWHITE };
 int	keycolor[KEYPARTS] = { CYELLOW };
 int	doorcolor[DOORFRAMES][DOORPARTS] = {{ CWHITE }, { CGREY }};
-int extramancolor = CBLUE;
+int	extramancolor = CBLUE;
 
-set_up_bitmaps()
+void	set_up_bitmaps()
 {
 	/*	first-stage pixmaps -- each different colored part must be created
 		from a mono bitmap, and then laid atop each other to make the

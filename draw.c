@@ -17,7 +17,7 @@ int	titley = 130;
 
 /*	draw draws all the objects in the window.
 */
-draw()
+void	draw()
 {
 #ifdef	BLIT
 	XCopyArea(display, drawpixmap, gamewindow, ctable[CBLACK].smallgc,
@@ -43,7 +43,7 @@ draw()
 
 /*	draw_maze draws the lines of the maze that appear in the window
 */
-draw_maze()
+void	draw_maze()
 {
 	register int	i, x1, y1, x2, y2;
 
@@ -68,7 +68,7 @@ draw_maze()
 
 /*	draw_player draws the player in the center of the window
 */
-draw_player()
+void	draw_player()
 {
 	if(dead) return;
 	if(exploded > -1) {
@@ -116,7 +116,7 @@ draw_player()
 
 /*	draw_fireballs draws all the fireballs in the window
 */
-draw_fireballs()
+void	draw_fireballs()
 {
 	register int	i, fx, fy;
 
@@ -140,7 +140,7 @@ draw_fireballs()
 
 /*	draw_guards draws all the guards in the window
 */
-draw_guards()
+void	draw_guards()
 {
 	register int	i, gx, gy;
 
@@ -164,7 +164,7 @@ draw_guards()
 
 /*	draw_sweepers draws all the sweepers in the window
 */
-draw_sweepers()
+void	draw_sweepers()
 {
 	register int	i, sx, sy;
 
@@ -188,7 +188,7 @@ draw_sweepers()
 
 /*	draw_treasures draws the key and fuel pods in the window
 */
-draw_treasures()
+void	draw_treasures()
 {
 	register int	i, tx, ty, width;
 
@@ -263,7 +263,7 @@ draw_treasures()
 
 /*	draw_door draws the door in the window
 */
-draw_door()
+void	draw_door()
 {
 	register int	dx, dy, phase;
 
@@ -289,8 +289,7 @@ draw_door()
 /*	transx translates an x coordinate against the player's x coordinate to
 	fit it properly in the window.
 */
-int	transx(x, off)
-int	x, off;
+int	transx(int x, int off)
 {
 	return(x - plx + WINDOWWIDTH / 2 - off / 2);
 }
@@ -298,15 +297,14 @@ int	x, off;
 /*	transy translates an y coordinate against the player's y coordinate to
 	fit it properly in the window.
 */
-int	transy(y, off)
-int	y, off;
+int	transy(int y, int off)
 {
 	return(y - ply + WINDOWHEIGHT / 2 - off / 2);
 }
 
 /*	refresh_info redraws the info window
 */
-refresh_info()
+void	refresh_info()
 {
 	register int	i;
 
@@ -328,7 +326,7 @@ refresh_info()
 
 /*	draw_messages draws any active messages in the window
 */
-draw_messages()
+void	draw_messages()
 {
 	register int	tmpcolor;
 
@@ -371,7 +369,7 @@ draw_messages()
 /*	draw_info draws the stuff in the info window that needs to be updated
 	frequently
 */
-draw_info()
+void	draw_info()
 {
 	int	tmp;
 
@@ -404,10 +402,7 @@ draw_info()
 
 /*  place_string draws a centered string on the title screen
 */
-place_string(s, y, color, info)
-char        *s;
-int         y, color;
-XFontStruct *info;
+void	place_string(char *s, int y, int color, XFontStruct *info)
 {
     register int    length, width;
 
@@ -436,7 +431,7 @@ XFontStruct *info;
 
 /*  title_draw updates and draws the title screen
 */
-title_draw()
+void	title_draw()
 {
     register int    i, j;
 
@@ -499,7 +494,7 @@ title_draw()
 /*  title_refresh draws the title screen stuff that doesn't have to be
     continuously updated
 */
-title_refresh()
+void	title_refresh()
 {
     char            scstring[30];
     register int    y, width;

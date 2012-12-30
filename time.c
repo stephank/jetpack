@@ -9,7 +9,7 @@ struct itimerval	val;
 
 /*	begin_timer starts the realtime process timer
 */
-begin_timer()
+void	begin_timer()
 {
 	val.it_value.tv_sec = 30000;
 	val.it_value.tv_usec = 0;
@@ -20,7 +20,7 @@ begin_timer()
 
 /*	stop_timer stops the realtime process timer
 */
-stop_timer()
+void	stop_timer()
 {
 	val.it_value.tv_sec = 0;
 	val.it_value.tv_usec = 0;

@@ -12,8 +12,7 @@ int	nx, ny;
 	effects like being stopped by a vertical wall on the other side of the
 	ceiling you're touching with your head.
 */
-int	set_in_maze(off)
-int	off;
+int	set_in_maze(int off)
 {
 	int flags = 0;
 

@@ -8,7 +8,7 @@ int	dead, deadtimer;
 
 /*	death is called when a player is killed.
 */
-death()
+void	death()
 {
     men--;
     if(men < 0) {
@@ -39,7 +39,7 @@ death()
 /*	game_over is called when a player loses his/her last life. The high
 	score table is checked, and some cleanup is done.
 */
-game_over()
+void	game_over()
 {
 	lastscore = score;
 	check_score();

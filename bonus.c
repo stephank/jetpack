@@ -9,7 +9,7 @@ int	bonus, bonustimer, initbonus, extramaninc;
 /*	bonus_check decrements the bonus and checks to see if the player has
 	earned an extra player
 */
-bonus_check()
+void	bonus_check()
 {
 	decrement_bonus();
 	extra_man_check();
@@ -17,7 +17,7 @@ bonus_check()
 
 /*	decrement_bonus decrements the bonus
 */
-decrement_bonus()
+void	decrement_bonus()
 {
 	bonustimer--;
 	if(!bonustimer) {
@@ -29,7 +29,7 @@ decrement_bonus()
 
 /*	extra_man_check awards an extra player if he/she has earned it
 */
-extra_man_check()
+void	extra_man_check()
 {
 	if(score >= EXTRAMANSCORE * extramaninc) {
 		men++;
@@ -42,7 +42,7 @@ extra_man_check()
 
 /*	score_bonus counts down the bonus at the end of a level
 */
-score_bonus()
+void	score_bonus()
 {
 	char buf[14];
 

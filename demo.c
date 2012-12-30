@@ -13,7 +13,7 @@ int	demostage, demodelay;
 	the demo, and demo_player does the actual player action. The level
 	itself is special level 0.
 */
-demo()
+void	demo()
 {
 	register unsigned long	timer;
 
@@ -46,7 +46,7 @@ demo()
 	surrounds the high score list that contain moving enemies. There is
 	also a player suspended in the center going through random motions.
 */
-title_screen()
+void	title_screen()
 {
 	register unsigned long	timer, btimer;
 	register int			shifttimer, shiftwhich;
@@ -103,8 +103,7 @@ title_screen()
 /*	demo_walk is a procedure that makes the demo player walk to a
 	position.
 */
-demo_walk(x)
-int	x;
+void	demo_walk(int x)
 {
 	if(plx > x + 5) playerdir = GOLEFT;
 	else if(plx < x - 5) playerdir = GORIGHT;
@@ -116,8 +115,7 @@ int	x;
 
 /*	demo_fly is a procedure that makes the demo player fly to a position.
 */
-demo_fly(x, y)
-int	x, y;
+void	demo_fly(int x, int y)
 {
 	int	maybe = 0;
 
@@ -137,7 +135,7 @@ int	x, y;
 
 /*	demo_delay makes the demo player wait for a while.
 */
-demo_delay()
+void	demo_delay()
 {
 	demodelay--;
 	if(!demodelay) demostage++;
@@ -148,7 +146,7 @@ demo_delay()
 	A much better implementation would be to have all the data in a static
 	array, but since it's so simple, I'll stick to this for now.
 */
-demo_player()
+void	demo_player()
 {
 	switch(demostage) {
 		case 0:

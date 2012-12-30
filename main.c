@@ -13,7 +13,7 @@ int	leveldone, paused, gameover, lastscore;
 /*	main is the main loop of the progam. (surprise!) Because of the
 	functional abstraction, it should be pretty readable.
 */
-main()
+int	main(int argc, char **argv)
 {
 	int						seed;
 	char					lev[20];

@@ -49,7 +49,7 @@ static char	*bigfontname = "-*-courier-bold-r-normal--*-180-*-*-m-150-*-*";
 
 /*	init_X opens the display and sets up all the color stuff
 */
-init_X()
+void	init_X()
 {
     display = XOpenDisplay(NULL);
     if (display == NULL) {
@@ -70,7 +70,7 @@ init_X()
 /*	set_up_contexts creates the graphics smallgcs used in the game, and
 	stores them in the ctable array. The fonts are created here too.
 */
-set_up_contexts()
+void	set_up_contexts()
 {
 	int			i;
 	XGCValues	values;
@@ -117,7 +117,7 @@ set_up_contexts()
 }
 
 /*	set_up_colors looks up the pixel values of the colors. */
-set_up_colors()
+void	set_up_colors()
 {
 	int		i;
 	XColor	screencolor, exactcolor;
